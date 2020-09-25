@@ -1,4 +1,4 @@
-#!/bash/sh
+#/bash/sh
 #$1 = year
 #$2 = month
 #$2 = day
@@ -23,21 +23,17 @@ cur_month=$2
 cur_date="01"
 cur_day="${cur_year}${cur_month}${cur_date}"
 
-#echo "cur_day:"$cur_day
-#echo "day:"$day
+echo "cur_day:"$cur_day
+echo "day:"$day
 
 for (( i=0; i<31; i++ ))
 do
 	temp_day=$(date "--date=${cur_day} -d +${i} day" +%a)
 	temp_date=$(date "--date=${cur_day} -d +${i} day" +%d)
-#	temp_month=$(date "--date=${cur_day} -d +${i} day" +%m)
-#echo "temp_day:"$temp_day" / temp_date:"$temp_date " / temp_month:"$temp_month
-#	if [[ "$temp_month" != "$cur_month" ]];then
-#		break;
-#   fi
-#	if [[ "$temp_date" == "31" ]];then
-#		break;
-#   fi
+	temp_month=$(date "--date=${cur_day} -d +${i} day" +%m)
+	
+#	echo "temp_day:"$temp_day" / temp_date:"$temp_date " / temp_month:"$temp_month
+
 	if [[ "$temp_day" == "$day" ]];then
     	date_list+=($temp_date)
     fi
